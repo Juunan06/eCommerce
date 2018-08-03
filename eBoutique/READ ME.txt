@@ -1,0 +1,41 @@
+/======================================================================/
+/======================================================================/
+/======================================================================/
+					CHEZ PUPUCE - READ ME
+/======================================================================/
+/======================================================================/
+/======================================================================/
+
+Customer request :
+- create an eShop
+- the client can only create an account and buy some products
+- an employee can add, modify or delete any products or category products
+- admin can handle the same as an employee and can handle users
+- the customer could modify anything except the design
+- the project must not use a CMS
+
+/======================================================================/
+/======================================================================/
+
+Working functionalities :
+- CRUD system for users when you're login as an admin or an employee, we distinguish both
+- Display products
+- Customer register and login
+- Customer dashboard ( display only, not really working)
+To do list :
+- CRUD system for products and product's category
+- Customer cart 
+- Customer dashboard with all listed functionalities
+
+/======================================================================/
+/======================================================================/
+
+Pieces of information for testing:
+- Admin account [login: admin, password: admin]
+- Employee account [login: employee, password: employee]
+- Customer account [login: user, password: user]
+
+Use eBoutique.sql to create a new database with all required tables which already contain some entries.
+Connexion's logs can be found in /app/logs/connection.txt
+
+Some class aren't used yet, but there are some interesting things, for example, a trait using in Client.php class
