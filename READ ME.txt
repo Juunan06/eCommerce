@@ -47,3 +47,4 @@ Known issues :
 - when we update an user, if any field is empty or not writed correctly, it throw an exception
 - some issue when we are redirect o badLogin.php
 - there is no javascript verification and less secure with all form when they're submitted
+- when we adding a new product, the product image isn't saved
