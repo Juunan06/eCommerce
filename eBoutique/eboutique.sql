@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 03 août 2018 à 13:30
--- Version du serveur :  5.7.21
--- Version de PHP :  5.6.35
+-- Généré le :  Dim 05 août 2018 à 10:29
+-- Version du serveur :  5.7.19
+-- Version de PHP :  5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -37,22 +37,23 @@ CREATE TABLE IF NOT EXISTS `article` (
   `article_desc` text COLLATE utf8mb4_unicode_ci,
   `article_price` decimal(10,2) DEFAULT NULL,
   `article_img` text COLLATE utf8mb4_unicode_ci,
-  `article_category` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
   `article_qte` int(11) DEFAULT NULL,
   PRIMARY KEY (`article_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `article`
 --
 
-INSERT INTO `article` (`article_id`, `article_name`, `article_desc`, `article_price`, `article_img`, `article_category`, `article_qte`) VALUES
+INSERT INTO `article` (`article_id`, `article_name`, `article_desc`, `article_price`, `article_img`, `category_id`, `article_qte`) VALUES
 (1, 'Blabla', 'Lorem ipsum sit amet', '1200.00', 'https://s1.qwant.com/thumbr/700x0/a/2/6bd7d9dfd68497cecde8d40dd476c96febf8f980c98cb386336b4610b2c991/Lorem-Ipsum.jpg?u=http%3A%2F%2Fvkwins.com%2Fwp-content%2Fuploads%2F2017%2F10%2FLorem-Ipsum.jpg&q=0&b=1&p=0&a=1', 1, 200),
 (2, 'BLublu', 'Lorijsdofnsdofnsf', '120.00', 'https://s1.qwant.com/thumbr/700x0/a/2/6bd7d9dfd68497cecde8d40dd476c96febf8f980c98cb386336b4610b2c991/Lorem-Ipsum.jpg?u=http%3A%2F%2Fvkwins.com%2Fwp-content%2Fuploads%2F2017%2F10%2FLorem-Ipsum.jpg&q=0&b=1&p=0&a=1', 1, 200),
-(3, 'dfij', 'bshdijbsv', '152.00', 'https://cdn.mycrazystuff.com/13204-large_default/cagoule-tete-de-gland.jpg', 1, 500),
-(4, 'dssdsgfgs', 'fssdffsd', '45.00', 'https://cdn.mycrazystuff.com/13204-large_default/cagoule-tete-de-gland.jpg', 2, 42),
-(5, 'fsbgdfg', 'dfbdbdb', '12.00', 'https://cdn.mycrazystuff.com/13204-large_default/cagoule-tete-de-gland.jpg', 2, 15),
-(6, 'fsvdbfdfb', 'gdfbd', '10.00', 'https://cdn.mycrazystuff.com/13204-large_default/cagoule-tete-de-gland.jpg', 12, 42);
+(3, 'dfij', 'bshdijbsv', '152.00', 'https://images.pexels.com/photos/9291/nature-bird-flying-red.jpg?cs=srgb&dl=animal-beak-bird-9291.jpg&fm=jpg', 1, 500),
+(4, 'dssdsgfgs', 'fssdffsd', '45.00', 'https://images.pexels.com/photos/9291/nature-bird-flying-red.jpg?cs=srgb&dl=animal-beak-bird-9291.jpg&fm=jpg', 2, 42),
+(5, 'fsbgdfg', 'dfbdbdb', '12.00', 'https://images.pexels.com/photos/9291/nature-bird-flying-red.jpg?cs=srgb&dl=animal-beak-bird-9291.jpg&fm=jpg', 2, 15),
+(6, 'fsvdbfdfb', 'gdfbd', '10.00', 'https://images.pexels.com/photos/9291/nature-bird-flying-red.jpg?cs=srgb&dl=animal-beak-bird-9291.jpg&fm=jpg', 12, 42),
+(11, 'az', 'az', '1.00', 'C:\\wamp64\\tmp\\php78D9.tmp', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -89,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `category` (
 INSERT INTO `category` (`category_id`, `category_name`, `category_desc`) VALUES
 (1, 'Toys', 'Some good toys'),
 (2, 'Medic', 'Some Pills'),
-(3, NULL, NULL);
+(3, 'Food', 'Animal Food');
 
 -- --------------------------------------------------------
 
@@ -196,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `rank_id` int(11) NOT NULL,
   `user_salaire` float DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `user`
@@ -205,7 +206,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`user_id`, `user_login`, `user_password`, `user_first_name`, `user_last_name`, `user_mail`, `user_adress`, `user_postal_code`, `user_city`, `user_date_of_birth`, `user_secu`, `user_account_create`, `rank_id`, `user_salaire`) VALUES
 (33, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'admin', 'admin@admin.admin', 'admin', 0, 'admin', '2001-01-01', '111111111111111', '2018-08-03 14:57:52', 2, 0),
 (34, 'employee', 'fa5473530e4d1a5a1e1eb53d2fedb10c', 'employee', 'employee', 'employee@employee.employee', 'employee', 0, 'employee', '2001-01-01', '111111111111111', '2018-08-03 15:00:01', 1, 0),
-(35, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', '', '', 'user@user.user', '', NULL, '', NULL, NULL, '2018-08-03 15:00:45', 0, NULL);
+(35, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', '', '', 'user@user.user', '', NULL, '', NULL, NULL, '2018-08-03 15:00:45', 0, NULL),
+(36, 'test', '098f6bcd4621d373cade4e832627b4f6', '', '', 'test@test.test', '', NULL, '', NULL, NULL, '2018-08-05 10:26:12', 0, NULL),
+(37, 'test2', '25ca6a09d2eecbe5350f43565dd95217', '', '', 'test2@test2.test2', '', NULL, '', NULL, NULL, '2018-08-05 10:27:02', 0, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

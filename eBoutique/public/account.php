@@ -114,8 +114,50 @@ include('../app/template/global/header.php');
 			?>
 			<h2>CRUD Produit :</h2>
 			<div class="row">
-				<button class="col-xl-4 offset-xl-4 btn btn-success"><span class="fas fa-plus">&nbsp;</span>Ajouter un produit</button>
+				<button class="col-xl-4 offset-xl-4 btn btn-success" data-toggle="modal" data-target="#modalAddProd"><span class="fas fa-plus">&nbsp;</span>Ajouter un produit</button>
 			</div>
+			<!-- MODAL TO ADD PRODUCT -->
+			<!-- Modal Start -->
+			<div class='modal fade' id='modalAddProd' tabindex='-1' role="dialog" aria-labelledby="modalAddProdLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="modalAddProdLabel">Ajouter un produit</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form method="POST" action="../app/template/includes/crudTreatment.php" enctype="multipart/form-data">
+								<!-- PRODUCT NAME -->
+								<label for="addProdName" class="form-control bg-dark text-light">Nom du produit :</label>
+								<input type="text" name="addProdName" class="form-control">
+								<!-- Product Desc -->
+								<label for="addProdDesc" class="form-control bg-dark text-light">Description du produit :</label>
+								<textarea name="addProdDesc" id="addProdDesc" rows="10" class="form-control"></textarea>
+								<!-- Product Price -->
+								<label for="addProdPrice" class="form-control bg-dark text-light">Prix du produit :</label>
+								<input type="number" min='0' name='addProdPrice' class="form-control">	
+								<!-- Product Image -->
+								<label for="addProdImg" class="form-control bg-dark text-light">Image du produit :</label>
+								<input type="file" name="addProdImg" id="addProdImg" class="form-control">
+								<!-- Product Category -->
+								<label for="addProdCat" class="form-control bg-dark text-light">Catégory du produit :</label>
+								<input type="number" min='0' name='addProdCat' class="form-control">
+								<!-- Product quantity -->
+								<label for="addProdQte" class="form-control bg-dark text-light">Qantité du produit :</label>
+								<input type="number" min='0' name='addProdQte' class="form-control">
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<input type="submit" name="submitAddProduct" class="btn btn-primary" value="Add Product">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Modal End -->
 			<table class="table" id="crudProductTable">
 				<thead>
 					<tr>
@@ -130,15 +172,9 @@ include('../app/template/global/header.php');
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>0</td>
-						<td>Costume gland</td>
-						<td>Un costume si joli</td>
-						<td>50</td>
-						<td>Toys</td>
-						<td>20</td>
-						<td><button class="btn btn-warning"><span class="fas fa-pen"></span></button>&nbsp;<button class="btn btn-danger"><span class="fas fa-ban"></span></button></td>
-					</tr>
+					<?php
+						Article::getArticleList($bdd);
+					?>
 				</tbody>
 			</table>
 

@@ -71,11 +71,12 @@ class User implements CrudInterface
 			//$addUser->bindParam(":rank",$rank, PDO::PARAM_INT);
 			//var_dump($addUser); // Debug
 		$exec = $addUser->execute();
-		if ($exec){
+		if (isset($_SESSION['register'])){
 			//echo "Add OK"; // Debug
 			unset($_SESSION['register']);
+		}
 			
-		}else{
+		if (!$exec){
 			throw new CustomException('An error occured, please check your query in User.php -> add()','0x400');
 		}
 	}
